@@ -1,5 +1,6 @@
 # Import python packages
 import requests
+import pandas as pd
 import streamlit as st
 from snowflake.snowpark.functions import col
 
@@ -19,7 +20,10 @@ my_dataframe = (
         )
 )
 
-st.dataframe(data=my_dataframe, use_container_width=True)
+# st.dataframe(data=my_dataframe, use_container_width=True)
+
+df_pd = my_dataframe.to_pandas()
+st.dataframe(df_pd)
 st.stop()
 
 name_on_order = st.text_input("Name on Smoothie:")
